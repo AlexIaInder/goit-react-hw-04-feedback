@@ -14,6 +14,7 @@ export const App = () => {
   const onLeaveFeedback = option => {
     setState(prevState => {
       return {
+        ...prevState,
         [option]: prevState[option] + 1,
       };
     });
@@ -28,7 +29,7 @@ export const App = () => {
       : '0';
   };
 
-  const hasNoStatistics = state.good + state.neutral + state.bad === 0;
+  const hasNoStatistics = !countTotalFeedback();
 
   return (
     <>
